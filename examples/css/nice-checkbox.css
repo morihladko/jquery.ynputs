@@ -1,0 +1,24 @@
+.cekbox {
+	display: inline-block;
+	height: 16px;
+	width: 16px;
+	margin: 3px;
+
+	background-color: transparent;
+	background-image: url('../img/cekbox-bgr.gif');
+	background-repeat: no-repeat;
+	vertical-align: middle;
+}
+
+.cekbox:hover {
+	background-position: 0 -16px;
+}
+
+.cekbox.checked {
+	background-position: 0 -32px;
+}
+
+.cekbox.checked:hover {
+	background-position: 0 -48px;
+}
+

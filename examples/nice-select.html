@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>playground | custom nice selectbox</title>
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery.selekt.js"></script>
+
+	<style type="text/css">
+	body {
+		font-family: Arial, sans-serif;
+		font-size: 15px;
+	}
+
+	select {
+		width: 250px;
+		margin-bottom: 10px;
+	}
+
+	p {
+		padding: 2em;
+	}
+	
+	html,body {
+		height: 100%;
+	}
+
+	form {
+		width: 500px;
+	}
+
+	</style>
+
+	<link rel="stylesheet" type="text/css" href="css/nice-select.css" />
+</head>
+
+<body>
+	<h1>Custom styled html inputs</h1>
+	<form action="nice-select.html" method="post">
+		<fieldset>
+			<legend>Selectbox</legend>
+
+			<select name="selekt" id="selekt">
+				<option value="0">option 0</option>
+				<option value="1">option 1</option>
+				<option value="2">option 2</option>
+				<option value="3">option 3</option>
+				<option value="4">option 4</option>
+			</select>
+		</fieldset>
+
+	<script type="text/javascript">
+	// <![CDATA[
+		$(document).ready( function() {
+			$('select').selekt();
+		} );
+	// ]]>
+	</script>
+</body>
+</html>
+

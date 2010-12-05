@@ -1,0 +1,47 @@
+.selekt {
+	width: 237px; 
+	height: 23px;
+	padding: 4px 6px;
+
+	background-color: transparent;
+	background-image: url('../img/selekt-bgr.gif');
+	background-repeat: no-repeat;
+
+	color: #AB978C;
+	font-size: 14px;
+	line-height:  23px;
+	cursor: pointer;
+}
+
+.selekt:hover {
+	background-position: 0 -31px;
+}
+.selekt.rollout {
+	background-position: 0 -62px;
+}
+
+.selekt-rollout {
+	width: 247px;
+
+	background-color: black;
+	border: 1px solid #635041;
+	color: #AB978C;
+	border-top: none;
+
+	cursor: pointer;
+}
+
+.selekt-rollout ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.selekt-rollout li {
+	padding: 4px 6px;
+}
+
+.selekt-rollout li.hover {
+	background-color: gray;
+	color: #FFFFCC;
+}

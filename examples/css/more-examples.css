@@ -1,0 +1,63 @@
+/* cekbox */
+.cekbox {
+	display: inline-block;
+	height: 10px;
+	width: 10px;
+	margin: 3px 3px 3px 4px;
+
+	border: 1px solid #333333;
+	background-color: #DDDDDD;
+	vertical-align: bottom;
+}
+
+.cekbox:hover {
+	border: 1px solid #9FDDFC;
+}
+
+.cekbox.checked {
+	background-color: #FFA50A;
+}
+
+/* selekt */
+.selekt {
+	border: 1px solid #222222;
+	width: 250px;
+
+	background-color: #AAAAAA;
+	padding: 4px 6px;
+	cursor: pointer;
+}
+
+.selekt:hover,
+.selekt.rollout {
+	background-color: #DDDDDD;
+}
+
+.selekt-rollout {
+	width: 262px;
+
+	border: 1px solid #222222;
+	border-top: none;
+
+	background-color: #DDDDDD;
+	cursor: pointer;
+}
+
+.selekt-rollout ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.selekt-rollout li {
+	padding: 4px 6px;
+}
+
+.selekt-rollout li.hover {
+	background-color: #FBFE99;
+}
+
+#float-selekt-selekt-rollout {
+	height: 150px;
+	overflow: auto;
+}
