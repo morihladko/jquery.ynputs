@@ -81,6 +81,10 @@
 				$selekt.css( 'z-index', 123546 );
 				$selekt.append( "<span style='display:none' class='selekt-val'>" + $( "option:selected", $select ).val() + "</span>" + $( 'option:selected', $select ).text() );
 
+				if( $select.is(':disabled') ) {
+					$selekt.addClass('disabled');
+				}
+
 				var $selektRollout = $("<div class='selekt-rollout selekt-el' style='display: none' id='" + this.id + "-selekt-rollout'>");
 				$selektRollout.append("<ul></ul>");
 
@@ -103,6 +107,10 @@
 				// selekt on click
 				$selekt.click( function() {
 					if( $selektRollout.is( ":hidden" ) ) {
+						if( $selekt.is('.disabled') ) {
+							return;
+						}
+
 						// check for other opened selectboxes
 						if( $.selekt.last ) {
 							rollUp( $.selekt.last );
@@ -120,14 +128,15 @@
 
 				// selekt option on click 
 				$( 'ul li', $selektRollout ).click( function( ev ) {
-					$(this).siblings(".selected").removeClass('selected');
-					$(this).addClass("selected");
+					$this = $(this);
+					$this.siblings(".selected").removeClass('selected');
+					$this.addClass("selected");
 					
 					// $select is the original select as jquery object
-					$select.val( $('span.selekt-val',this).text() )
+					$select.val( $( 'span.selekt-val', $this ).text() )
 						.trigger('change'); 
 					
-					$selekt.html( $(this).html() );
+					$selekt.html( $this.html() );
 
 					rollUp( $selektRollout );
 

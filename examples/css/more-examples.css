@@ -18,6 +18,14 @@
 	background-color: #FFA50A;
 }
 
+.cekbox.disabled {
+	opacity: 0.5;
+}
+
+.cekbox.disabled:hover {
+	border: 1px solid #333333;
+}
+
 /* selekt */
 .selekt {
 	border: 1px solid #222222;
@@ -28,9 +36,20 @@
 	cursor: pointer;
 }
 
+/** disabled input */
+.selekt.disabled {
+	opacity: 0.5;
+	cursor: default;
+}
+
 .selekt:hover,
 .selekt.rollout {
 	background-color: #DDDDDD;
+}
+
+.selekt.disabled:hover,
+.selekt.disabled.rollout {
+	background-color: #AAAAAA;
 }
 
 .selekt-rollout {

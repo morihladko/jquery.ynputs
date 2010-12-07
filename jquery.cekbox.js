@@ -40,9 +40,17 @@
 				$cekbox.addClass( 'unchecked' );
 			}
 
+			if( $checkbox.is(':disabled') ) {
+				$cekbox.addClass( 'disabled' );
+			}
+
 			$checkbox.after( $cekbox );
 
 			$cekbox.click( function() {
+				if( $cekbox.is('.disabled') ) {
+					return;
+				}
+
 				if( $checkbox.is(':checked') ) {
 					$cekbox.addClass( 'unchecked' ).removeClass('checked');
 					$checkbox.attr( 'checked', false ); 
