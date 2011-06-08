@@ -2,4 +2,30 @@ jQuery plugins for customizable html inputs [select and checkbox].
 
 At one time we needed to customize a html select and checkboxes. I couldn't find any nice JS solution to this, so I wrote my own. After a while we needed to reuse it. So I rewrote it to these jquery plugins. 
 
-# TODO write something more
+For now it supports only selectbox and checkbox. They have both separate files, or you can use the jquery.ynputs.js, which contains both of them.
+
+The philosophy of this plugins is that they replace the original components, but you don't have to change your html form and server script and they should handle just the interaction, the looks you have to define by yourself in the css.
+
+[Selekt]
+You have to provide a normal <select> with some options. You can have an onchange handler attached to it, it will be called by the plugin. Then when you call jquery.selekt('#original-select-id'), the plugin hide the original and create a series of html elements, which simulates a selectbox.
+
++-.selekt-wrap-----------------------------------+
+| +-.selekt------------------------------------+ |
+| | text of the selected option                | |
+| | [attribute:data-value=selected-item-value] | |
+| +--------------------------------------------+ |
+| +-.selekt-rollout----------------------------+ |
+| | <ul>                                       | |
+| |  <li class="selekt-option hover selected"> | |
+| |   text of an option                        | |
+| |  </li>                                     | |
+| |  <li class="selekt-option" data-value="1"> | |
+| |   text of an option                        | |
+| |  </li>                                     | |
+| | </ul>                                      | |
+| +--------------------------------------------+ |
++------------------------------------------------+
+<select style="display: none">...</select>
+
+All of the elements also have ID, by the pattern {original-id}-[selekt-wrap|selekt|selekt-rollout|selekt-option-{index}] and an common class selekt-el.
+The selekt element and the li elements have the corresponding input values as html5 data attribute data-value. If user change the selected value, it will be changed also in the original select, so when the form is submitted you can read the value from it.

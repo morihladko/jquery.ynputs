@@ -76,7 +76,12 @@
 	background-color: #FBFE99;
 }
 
+#float-selekt-selekt {
+	width: 150px;
+}
+
 #float-selekt-selekt-rollout {
 	height: 150px;
+	width: 162px;
 	overflow: auto;
 }
