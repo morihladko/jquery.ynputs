@@ -22,7 +22,7 @@
 			.data( 'selekt', selekt );
 
 		// create the rollout
-		var $selektRollout = $("<div class='selekt-rollout selekt-el' style='display: none;overflow: scroll;' id='" + selectId + "-selekt-rollout'>");
+		var $selektRollout = $("<div class='selekt-rollout selekt-el' style='display: none;overflow: auto;' id='" + selectId + "-selekt-rollout'>");
 		$selektRollout.append("<ul></ul>");
 
 		// copy the options as list

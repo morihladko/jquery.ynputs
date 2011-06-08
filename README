@@ -1,5 +1,7 @@
 jQuery plugins for customizable html inputs [select and checkbox].
 
+examples: http://atteq.com/~peter/jquery.plugins/
+
 At one time we needed to customize a html select and checkboxes. I couldn't find any nice JS solution to this, so I wrote my own. After a while we needed to reuse it. So I rewrote it to these jquery plugins. 
 
 For now it supports only selectbox and checkbox. They have both separate files, or you can use the jquery.ynputs.js, which contains both of them.
@@ -27,5 +29,5 @@ You have to provide a normal <select> with some options. You can have an onchang
 +------------------------------------------------+
 <select style="display: none">...</select>
 
-All of the elements also have ID, by the pattern {original-id}-[selekt-wrap|selekt|selekt-rollout|selekt-option-{index}] and an common class selekt-el.
+All of the elements also have ID, by the pattern {original-id}-[selekt-wrap|selekt|selekt-rollout|selekt-option-{index}] and a common class selekt-el.
 The selekt element and the li elements have the corresponding input values as html5 data attribute data-value. If user change the selected value, it will be changed also in the original select, so when the form is submitted you can read the value from it.
