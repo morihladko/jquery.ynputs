@@ -18,7 +18,7 @@
 		$selekt
 			.css( 'z-index', 99 )
 			.append( $( 'option:selected', selekt.$sourceSelect ).text() )
-			.attr( 'tabindex', selekt.$sourceSelect.attr('tabindex') )
+			.prop( 'tabindex', selekt.$sourceSelect.prop('tabindex') )
 			.data( 'selekt', selekt );
 
 		// create the rollout
@@ -141,7 +141,7 @@
 	 */
 	function Selekt( $select ) {
 		this.$sourceSelect = $select;
-		this.selectedIndex = $select.attr('selectedIndex' );
+		this.selectedIndex = $select.prop('selectedIndex' );
 		this.maxIndex      = $( 'option', $select ).length - 1;
 		this.searchPattern = { prefix: '', timestamp: 0 };
 		this.rollUpTimeout = null;
@@ -235,7 +235,7 @@
 		 */
 		this.pushChange = function() {
 			this.$sourceSelect
-				.attr( 'selectedIndex', this.selectedIndex )
+				.prop( 'selectedIndex', this.selectedIndex )
 				.change();
 		};
 
@@ -243,9 +243,9 @@
 		 * Change the original selected value, if user has selected a new one.
 		 */
 		this.pushChangeIfDifferent = function() {
-			if( this.$sourceSelect.attr('selectedIndex') != this.selectedIndex ) {
+			if( this.$sourceSelect.prop('selectedIndex') != this.selectedIndex ) {
 				this.$sourceSelect
-					.attr( 'selectedIndex', this.selectedIndex )
+					.prop( 'selectedIndex', this.selectedIndex )
 					.change();
 			}
 		};
@@ -326,8 +326,8 @@
 
 			if( $el.is("select") ) {
 				// make the tabindex
-				if( ! $el.attr('tabindex') ) {
-					$el.attr('tabindex',  0);
+				if( ! $el.prop('tabindex') ) {
+					$el.prop('tabindex',  0);
 				}
 
 				new Selekt( $el );
@@ -341,10 +341,10 @@
 	function change( $cekbox, $checkbox ) {
 		if( $checkbox.is(':checked') ) {
 			$cekbox.addClass('unchecked').removeClass('checked');
-			$checkbox.attr('checked', false); 
+			$checkbox.prop('checked', false); 
 		} else {
 			$cekbox.addClass('checked').removeClass('unchecked')
-			$checkbox.attr('checked', true);
+			$checkbox.prop('checked', true);
 		}
 	}
 
@@ -357,12 +357,12 @@
 			}
 
 			$checkbox.hide();
-			if( ! $checkbox.attr('tabindex') ) {
-				$checkbox.attr('tabindex',	0);
+			if( ! $checkbox.prop('tabindex') ) {
+				$checkbox.prop('tabindex',	0);
 			}
 
 			var $cekbox = $("<span class='cekbox' />")
-				.attr('tabindex', $checkbox.attr('tabindex'));
+				.prop('tabindex', $checkbox.prop('tabindex'));
 
 			if( $checkbox.is(':checked') ) {
 				$cekbox.addClass('checked');

@@ -1,6 +1,8 @@
 jQuery plugins for customizable html inputs [select and checkbox].
 
-examples: http://atteq.com/~peter/jquery.plugins/
+examples: http://atteq.com/~peter/jquery.ynputs/
+
+Works with jQuery 1.6+ 
 
 At one time we needed to customize a html select and checkboxes. I couldn't find any nice JS solution to this, so I wrote my own. After a while we needed to reuse it. So I rewrote it to these jquery plugins. 
 

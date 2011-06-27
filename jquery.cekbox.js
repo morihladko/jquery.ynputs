@@ -3,10 +3,10 @@
 	function change( $cekbox, $checkbox ) {
 		if( $checkbox.is(':checked') ) {
 			$cekbox.addClass('unchecked').removeClass('checked');
-			$checkbox.attr('checked', false); 
+			$checkbox.prop('checked', false); 
 		} else {
 			$cekbox.addClass('checked').removeClass('unchecked')
-			$checkbox.attr('checked', true);
+			$checkbox.prop('checked', true);
 		}
 	}
 
@@ -19,12 +19,12 @@
 			}
 
 			$checkbox.hide();
-			if( ! $checkbox.attr('tabindex') ) {
-				$checkbox.attr('tabindex',	0);
+			if( ! $checkbox.prop('tabindex') ) {
+				$checkbox.prop('tabindex',	0);
 			}
 
 			var $cekbox = $("<span class='cekbox' />")
-				.attr('tabindex', $checkbox.attr('tabindex'));
+				.prop('tabindex', $checkbox.prop('tabindex'));
 
 			if( $checkbox.is(':checked') ) {
 				$cekbox.addClass('checked');
