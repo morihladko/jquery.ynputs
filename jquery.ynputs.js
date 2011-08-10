@@ -63,6 +63,8 @@
 	 * @param selekt the selekt object
 	 */
 	function attachEventsToSelekt( selekt ) {
+
+		selekt.shouldBlur = false;
 		selekt.$self
 			// selekt on click
 			.click( function() {
@@ -106,11 +108,27 @@
 
 			} )
 			.blur( function() {
-				if( selekt.$rollout.is(':hidden') ) {
-					selekt.pushChangeIfDifferent();
-				} else {
-					selekt.rollUpTimeout = setTimeout( function(sel) { sel.rollUpAndFocus() }, 250, selekt );
-				}
+				var scrollTop = selekt.$rollout.scrollTop();
+
+				// chrome scrollbar wokraround
+				setTimeout( 
+					function () {
+						if( scrollTop == selekt.$rollout.scrollTop() ) {
+							if( selekt.$rollout.is(':hidden') ) {
+								selekt.pushChangeIfDifferent();
+							} else {
+								selekt.rollUpTimeout = setTimeout( function(sel) { sel.rollUpAndFocus() }, 250, selekt );
+							}
+
+							selekt.shouldBlur = true;
+						} else {
+							selekt.$self.focus();
+						}
+
+					}, 
+					200
+				);
+
 			} );
 
 		// selekt option on click 
