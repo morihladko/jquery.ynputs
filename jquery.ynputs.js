@@ -108,12 +108,12 @@
 
 			} )
 			.blur( function() {
-				var scrollTop = selekt.$rollout.scrollTop();
+				var scrollTop = selekt.$rollout.scrollTop() + selekt.$rollout_ul.scrollTop();
 
 				// chrome scrollbar wokraround
 				setTimeout( 
 					function () {
-						if( scrollTop == selekt.$rollout.scrollTop() ) {
+						if( scrollTop == selekt.$rollout.scrollTop() + selekt.$rollout_ul.scrollTop() ) {
 							if( selekt.$rollout.is(':hidden') ) {
 								selekt.pushChangeIfDifferent();
 							} else {
@@ -168,6 +168,7 @@
 
 		this.$self         = result.$selekt;
 		this.$rollout      = result.$rollout;
+		this.$rollout_ul   = result.$rollout.children('ul');
 	
 		attachEventsToSelekt( this );
 
