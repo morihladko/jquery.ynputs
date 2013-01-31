@@ -73,6 +73,7 @@
 
 			this.$el.addClass('checked').removeClass('unchecked')
 			this.$original.prop('checked', true);
+			this.$original.change();
 		}
 
 		add_box_to_list(this);
