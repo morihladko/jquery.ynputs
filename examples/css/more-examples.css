@@ -6,6 +6,7 @@
 	margin: 3px 3px 3px 4px;
 
 	border: 1px solid #333333;
+	border-radius: 3px;
 	background-color: #DDDDDD;
 	vertical-align: bottom;
 }
@@ -29,6 +30,7 @@
 /* selekt */
 .selekt {
 	border: 1px solid #222222;
+	border-radius: 3px;
 	width: 250px;
 
 	background-color: #AAAAAA;
@@ -53,7 +55,7 @@
 }
 
 .selekt-rollout {
-	width: 262px;
+	width: 250px;
 
 	border: 1px solid #222222;
 	border-top: none;
@@ -82,6 +84,6 @@
 
 #float-selekt-selekt-rollout {
 	height: 150px;
-	width: 162px;
+	width: 150px;
 	overflow: auto;
 }

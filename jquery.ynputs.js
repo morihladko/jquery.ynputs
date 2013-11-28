@@ -107,29 +107,22 @@
 				}
 
 			} )
-			.blur( function() {
+			.blur(function() {
 				var scrollTop = selekt.$rollout.scrollTop() + selekt.$rollout_ul.scrollTop();
 
-				// chrome scrollbar wokraround
-				setTimeout( 
-					function () {
-						if( scrollTop == selekt.$rollout.scrollTop() + selekt.$rollout_ul.scrollTop() ) {
-							if( selekt.$rollout.is(':hidden') ) {
-								selekt.pushChangeIfDifferent();
-							} else {
-								selekt.rollUpTimeout = setTimeout( function(sel) { sel.rollUpAndFocus() }, 250, selekt );
-							}
+				if( scrollTop == selekt.$rollout.scrollTop() + selekt.$rollout_ul.scrollTop() ) {
+					if( selekt.$rollout.is(':hidden') ) {
+						selekt.pushChangeIfDifferent();
+					} else {
+						selekt.rollUpTimeout = setTimeout( function(sel) { sel.rollUpAndFocus() }, 250, selekt );
+					}
 
-							selekt.shouldBlur = true;
-						} else {
-							selekt.$self.focus();
-						}
+					selekt.shouldBlur = true;
+				} else {
+					selekt.$self.focus();
+				}
 
-					}, 
-					200
-				);
-
-			} );
+			});
 
 		// selekt option on click 
 		$( 'ul li', selekt.$rollout ).click( function( ev ) {
@@ -157,27 +150,42 @@
 	 *
 	 * @param $selekt jQuery object of a select element
 	 */
-	function Selekt( $select ) {
+	function Selekt($select) {
 		this.$sourceSelect = $select;
-		this.selectedIndex = $select.prop('selectedIndex' );
-		this.maxIndex      = $( 'option', $select ).length - 1;
+		this.selectedIndex = $select.prop('selectedIndex');
+		this.maxIndex      = $('option', $select).length - 1;
 		this.searchPattern = { prefix: '', timestamp: 0 };
 		this.rollUpTimeout = null;
 
-		var result = createSelektHTML( this );
+		var result = createSelektHTML(this);
 
 		this.$self         = result.$selekt;
 		this.$rollout      = result.$rollout;
 		this.$rollout_ul   = result.$rollout.children('ul');
 	
-		attachEventsToSelekt( this );
+		attachEventsToSelekt(this);
 
 		/**
 		 * Roll down the list
 		 */
 		this.rollDown = function() {
-			this.$rollout.slideDown( "fast" );
-			this.$self.addClass( 'rollout' );
+			var 
+				height = this.$rollout.height(),
+				offset = this.$self.offset().top + this.$self.outerHeight();
+
+			if (height + offset < $(window).height()) {
+				this.$rollout.slideDown("fast");
+
+			} else {
+				this.$rollout.addClass('selekt-rollout-up');
+				this.$rollout.css('top', -height + 'px')
+				this.$rollout.show();
+			}
+
+			offset = this.$rollout.offset(); // je to az za slideDown, el musi byt visible
+
+			
+			this.$self.addClass('rollout');
 
 			this.$rollout.scrollTop(
 				$('li.selected', this.$rollout).position().top
@@ -188,11 +196,16 @@
 		 * Roll up and hide the options.
 		 */
 		this.rollUp = function() {
-			$( "li.hover", this.$rollout ).removeClass( "hover" );
-			$( "li.selected", this.$rollout ).addClass( "hover" );
+			$("li.hover",this.$rollout).removeClass("hover");
+			$("li.selected",this.$rollout).addClass("hover");
 
-			this.$rollout.slideUp( 'fast' );
-			this.$self.removeClass( 'rollout' );
+			if (this.$rollout.is('.selekt-rollout-up')) {
+				this.$rollout.hide();
+				this.$rollout.removeClass('selekt-rollout-up');
+			} else {
+				this.$rollout.slideUp('fast');
+			}
+			this.$self.removeClass('rollout');
 
 			$.selekt.last = null;
 		};
@@ -508,4 +521,4 @@
 		});
 	}
 
-}(jQuery))
+}(jQuery));
