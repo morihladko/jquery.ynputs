@@ -170,7 +170,7 @@
 		 */
 		this.rollDown = function() {
 			var 
-				height = this.$rollout.height(),
+				height = this.$rollout.outerHeight(),
 				offset = this.$self.offset().top + this.$self.outerHeight();
 
 			if (height + offset < $(window).height()) {
@@ -178,7 +178,12 @@
 
 			} else {
 				this.$rollout.addClass('selekt-rollout-up');
-				this.$rollout.css('top', -height + 'px')
+				
+				this.$rollout.css({
+					top: null,
+					bottom: 0
+				});
+
 				this.$rollout.show();
 			}
 
@@ -200,8 +205,13 @@
 			$("li.selected",this.$rollout).addClass("hover");
 
 			if (this.$rollout.is('.selekt-rollout-up')) {
-				this.$rollout.hide();
-				this.$rollout.removeClass('selekt-rollout-up');
+				this.$rollout
+					.hide()
+					.removeClass('selekt-rollout-up')
+					.css({
+						bottom: null,
+						top: 0
+					});
 			} else {
 				this.$rollout.slideUp('fast');
 			}
