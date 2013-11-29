@@ -177,14 +177,10 @@
 				this.$rollout.slideDown("fast");
 
 			} else {
-				this.$rollout.addClass('selekt-rollout-up');
-				
-				this.$rollout.css({
-					top: null,
-					bottom: 0
-				});
-
-				this.$rollout.show();
+				this.$rollout
+					.addClass('selekt-rollout-up')
+					.css('top', -height + 'px')
+					.show();
 			}
 
 			offset = this.$rollout.offset(); // je to az za slideDown, el musi byt visible
@@ -208,10 +204,7 @@
 				this.$rollout
 					.hide()
 					.removeClass('selekt-rollout-up')
-					.css({
-						bottom: null,
-						top: 0
-					});
+					.css('top', 0);
 			} else {
 				this.$rollout.slideUp('fast');
 			}
